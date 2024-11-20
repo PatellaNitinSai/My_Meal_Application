@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #vegForm {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form id="vegForm">
+        <label for="veg">Add Item</label>
+        <input type="text" id="Name" placeholder="Item Name">
+        <label for="description">Description</label>
+        <input type="text" id="description" placeholder="Description">
+        <label for="price">Price</label>
+        <input type="number" id="price" placeholder="Price">
+        <label for="category">Category</label>
+        <select id="category">
+            <option value="veg">Veg</option>
+            <option value="nonveg">Non-Veg</option>
+            <option value="drinks">Drinks</option>
+        </select>
+        <button type="button" id="addItemBtn">Add</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addItemBtn = document.getElementById('addItemBtn');
+
+            addItemBtn.addEventListener('click', function () {
+                const itemName = document.getElementById('Name').value;
+                const itemDescription = document.getElementById('description').value;
+                const itemPrice = document.getElementById('price').value;
+                const itemCategory = document.getElementById('category').value;
+
+                // Check if required fields are not empty
+                if (!itemName || !itemDescription || !itemPrice || !itemCategory) {
+                    alert('Please fill in all the required fields.');
+                    return;
+                }
+
+                // Prepare the data to be sent to the server
+                const formData = {
+                    itemName: itemName,
+                    description: itemDescription,
+                    price: itemPrice,
+                    category: itemCategory,
+                };
+
+                // Send a POST request to the server
+                axios.post('http://localhost:3000/menu/veg', formData)
+                    .then(response => {
+                        alert('Item added successfully!');
+                        // Handle any additional actions on success if needed
+                    })
+                    .catch(error => {
+                        console.error('Error adding item:', error);
+                        alert('Error adding item. Please try again.');
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

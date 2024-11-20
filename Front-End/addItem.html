@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Restaurant Menu Management</h1>
+    
+        <form id="addItemForm">
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" name="itemName" required>
+    
+            <label for="itemDescription">Item Description:</label>
+            <textarea id="itemDescription" name="itemDescription" required></textarea>
+    
+            <label for="itemPrice">Item Price:</label>
+            <input type="number" id="itemPrice" name="itemPrice" step="0.01" required>
+    
+            <button type="button" onclick="">Add Item</button>
+        </form>
+    
+        <button onclick="showItems()" target="_blank">Menu</button>
+    
+        <div id="cartContainer">
+            <!-- The added items will appear here -->
+        </div>
+    </div>
+    
+    <script src="addItem.js"></script>
+</body>
+</html>

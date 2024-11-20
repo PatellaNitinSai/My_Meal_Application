@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rooms.css">
+    <title>Room Booking Form</title>
+  
+</head>
+<body>
+
+    <h2>Room Booking Form</h2>
+
+    <form action="submit_booking.php" method="post">
+        <!-- Personal Information -->
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <!-- Booking Details -->
+        <label for="check_in">Check-in Date:</label>
+        <input type="date" id="check_in" name="check_in" required>
+
+        <label for="check_out">Check-out Date:</label>
+        <input type="date" id="check_out" name="check_out" required>
+        <label for="aadhaar">Aaadhar Number</label>
+        <input type="number" id="aadhaar">
+
+        <label for="room_type">Room Type:</label>
+        <select id="room_type" name="room_type" required>
+            <option value="single">Single Room</option>
+            <option value="double">Double Room</option>
+            <option value="suite">Suite</option>
+        </select>
+
+        <!-- Additional Requests -->
+        <label for="special_requests">Special Requests:</label>
+        <textarea id="special_requests" name="special_requests" rows="4"></textarea>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit Booking</button>
+    </form>
+
+</body>
+</html>

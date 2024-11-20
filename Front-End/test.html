@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .cursive-text {
+            font-size: 3rem;
+            font-family: 'Lucida Handwriting', cursive;
+            color: #3498db;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: reveal 3s ease-in-out;
+        }
+
+        @keyframes reveal {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursive-text">Pick and Order</div>
+</body>
+
+</html>

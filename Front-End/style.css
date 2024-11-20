@@ -1,0 +1,209 @@
+.image-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    align-items: end;
+    gap:400px;
+
+}
+#first-image{
+  width:330px;
+  height:250px;
+}
+.card{
+  margin-top: 30px;
+  margin-left: 30px;
+  border-radius: 40px;
+}
+#Hotel-card{
+  margin-top: 40px;
+}
+.image{
+  width:400px;
+  position: fixed;
+}
+
+.logo-image{
+    width:200px;
+    height:250px;
+    margin-top:150px;
+}
+.card-container{
+    display: flex;
+    flex-direction: row;
+    gap:200px;
+}
+#next{
+  margin-right: 1000px;
+}
+#nav{
+  padding:10px;
+  border-radius: 11px;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  color: black;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black;
+}
+.carousel-item{
+  width:600px;
+  height: 500px;
+   padding:0px;
+  border-radius: 25px;
+  margin-left: 250px;
+}
+body {
+  background: linear-gradient(135deg, #87CEEB, #FFFFFF); /* Adjust colors as needed */
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lucida Sans', 'Arial', sans-serif; /* Add your preferred font stack */
+  color: #333; /* Adjust text color as needed */
+}
+
+
+
+
+.background-text {
+  font-size: 3em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+.shimmer-text {
+  font-size: 6em;
+  position: absolute; /* Set position to absolute for precise positioning */
+  font-family: 'Lucida Handwriting', 'Comic Sans MS', cursive;
+  top: 22%; /* Adjusted top value */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  overflow: hidden;
+  background: linear-gradient(to right, #3498db, #2ecc71, #e74c3c);
+  background-size: 200% auto;
+  animation: shimmer 2s infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  z-index: 1;
+}
+
+/* Rest of your existing styles... */
+
+
+
+/* Rest of your existing styles... */
+@keyframes shimmer {
+  0% {
+      background-position: 0% center;
+  }
+  100% {
+      background-position: 200% center;
+  }
+}
+
+header {
+  color: white;
+  background: linear-gradient(45deg, #333, #444, #3498db); /* Dark to Light Blue gradient */
+  margin-top: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  padding: 5px;
+  display: flex;
+  border: 7px solid #2ecc71;
+  border-width: 3px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 21px;
+}
+
+
+  #card1{
+    border-radius: 25px;
+  }
+  #card2{
+    border-radius: 40px;
+  }
+  #card2{
+    border-radius: 40px;
+  }
+  .logo {
+    font-size: 1.5em;
+    color:white;
+    margin-top: 15px;
+  }
+  header{
+    background-size:100%; 
+    border: 1px solid white;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+    margin-top: 55px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease-in-out;
+  }
+  img{
+    border-radius: 50px;
+  }
+  
+  nav a:hover {
+    color: pink;
+  }
+
+nav{
+  display: flex;
+  flex-direction: row;
+}
+  
+.chef-image{
+  display:flex;
+  background-color: black;
+  color: black;
+  border-radius: 50px;
+margin-left: 400px;
+margin-bottom: 20px;
+}
+.chef-image:hover{
+  transform: translate(-50px,10px);
+  transition: transform 0.5s ease-in-out
+}
+.first-image{
+  margin-bottom: 50px;
+  width: 270px;
+  border-radius: 50px;
+}
+.first-image:hover{
+  transform: translate(50px, 20px);
+  transition: transform 0.5s ease-in-out
+}
+#non-veg{
+  background-color: #ff6961;
+}
+#veg{
+  background-color: #00ff7f;
+}
+#drinks{
+  background-color: #da1d81;
+}
+
+footer{
+  color:white;
+}

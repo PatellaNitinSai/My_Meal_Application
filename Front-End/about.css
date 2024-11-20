@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+}
+h1 {
+    color: #e44d26;
+    text-align: center;
+}
+p {
+  color:white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.diagram {
+    text-align: center;
+    margin-top: 40px;
+}
+.restaurant-layout {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+}
+.table {
+    position: absolute;
+    background-color: #e44d26;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+}
+body{
+    background-color: black;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+header {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    display: flex;
+    border: 2px solid white;
+    margin-top: 6px;
+    margin-right: 3px;
+    margin-left: 3px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 21px;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    color:white;
+    margin-top: 15px;
+  }
+  header{
+    color: black;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+    margin-top: 55px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  nav a:hover {
+    color: #ff9900;
+  }
+  nav{
+    display: flex;
+    flex-direction: row;
+  }
+  .restaurant-layout{
+    margin-top:30px;
+    display: flex;
+    flex-direction: row;
+    gap:80px;
+  }  
+  h2{
+    color:white;
+  }

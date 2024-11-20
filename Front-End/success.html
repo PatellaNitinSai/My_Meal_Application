@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3 style="margin-top: 0;">Success</h3>
+  <div id="orderedItemsContainer"></div>
+  <script>
+    const orderItemsString = localStorage.getItem('cartItems');
+const orderItems = orderItemsString ? JSON.parse(orderItemsString) : [];
+const orderedItemsContainer = document.getElementById('orderedItemsContainer');
+
+if (orderItems.length > 0) {
+    orderItems.forEach(item => {
+        let itemElement = document.createElement('div');
+        itemElement.innerHTML = `<h2 class="item">${item}</h2>`;
+        orderedItemsContainer.appendChild(itemElement);
+    });
+  }
+
+  </script>
+</body>
+</html>
