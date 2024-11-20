@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "start": "node server.js",
+      "start": "npm run start --prefix backend",
+    "build": "echo 'No build step required in root'",
   "devStart": "nodemon server.js"
-    
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",

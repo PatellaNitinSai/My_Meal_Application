@@ -2,5 +2,10 @@
   "dependencies": {
     "express-async-handler": "^1.2.0",
     "nodemon": "^3.1.7"
+  },
+  "scripts": {
+    "start": "npm run start --prefix backend",
+    "dev": "nodemon backend/server.js",
+    "build": "echo 'No build step required in root'"
   }
 }
