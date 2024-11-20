@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "start": "node server.js",
-  "devStart": "nodemon server.js"
-    
+    "start": "node server.js",
+    "devStart": "nodemon server.js",
+    "build": "babel src -d lib",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +22,8 @@
     "stripe": "^8.165.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "babel-cli": "^6.26.0",
+    "jest": "^29.0.0"
   }
-  
 }
