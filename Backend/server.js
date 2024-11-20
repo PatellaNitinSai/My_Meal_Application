@@ -11,7 +11,7 @@ const Menu = require('./Routes/Menu');
 const user = require('./Routes/user');
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 app.use(cors({
-    origin: "https://my-meal-application-00.onrender.com/" 
+    origin: ['https://my-meal-application-00.onrender.com', 'http://localhost:3000']
 }));
 // Define your storeItems map with predefined items
 const storeItems = new Map([
