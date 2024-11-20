@@ -1,12 +1,6 @@
 {
-  "name": "my-package",
-  "scripts": {
-    "build": "babel src -d lib",
-    "test": "jest"
-  },
   "dependencies": {
     "express-async-handler": "^1.2.0",
     "nodemon": "^3.1.7"
   }
 }
-
