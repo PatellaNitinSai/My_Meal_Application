@@ -3,161 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updated Design</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-2VlIfh0ZhCrqV0oo3uxvJhbu02Rs2p5TbkxOFxJ+8qK/E97pZCUg0xBohJz+wLdu" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-Z6fSgnZ9xIbDBLml8cFa6rWT7wsuHL8FAYxBbWydU1FeJboAEnA+YYOuQq0+XT1Q" crossorigin="anonymous"></script>
+    <title>Enable Location</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f0f4f8;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            color: #343a40;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        #locationStatus {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1rem;
+            color: #28a745;
+        }
+        .scrolling-text {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .scrolling-text span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 10s linear infinite;
+        }
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-     <style>
-        .carousel-control-prev-icon, .carousel-control-next-icon {
-            background-color: black; /* Set icon color to black */
-        }
-     </style>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand h3" href="./Home.html">Logo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="./Home.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <div class="bike-container">
-                                <div class="bike"></div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <button class="btn btn-danger" onclick="window.location.href='login.html'">Login</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Images Section -->
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <!-- First Image -->
-            <!-- Chef Image (GIF) -->
-            <div class="col-md-6 d-flex justify-content-center">
-                <img src="https://media.tenor.com/ba7gafSyuEAAAAAM/tasty-hills-my-tona.gif" alt="Chef" class="img-fluid rounded">
-            </div>
-        </div>
-    </div>
-    
-
-    <!-- Carousel Section -->
-    <div class="container mt-5">
-        <div id="threeImageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600" class="d-block w-100 rounded" alt="Steak and Lobster">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.pexels.com/photos/1482803/pexels-photo-1482803.jpeg?auto=compress&cs=tinysrgb&w=600" class="d-block w-100 rounded" alt="Duck Leg">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.pexels.com/photos/1410236/pexels-photo-1410236.jpeg?auto=compress&cs=tinysrgb&w=600" class="d-block w-100 rounded" alt="Pork Burgers">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.pexels.com/photos/699544/pexels-photo-699544.jpeg?auto=compress&cs=tinysrgb&w=600" class="d-block w-100 rounded" alt="Second Slide">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.pexels.com/photos/372851/pexels-photo-372851.jpeg?auto=compress&cs=tinysrgb&w=600" class="d-block w-100 rounded" alt="Third Slide">
-                </div>
-            </div>
-            <button id="previous" class="carousel-control-prev" type="button" data-bs-target="#threeImageCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#threeImageCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden" id="next">Next</span>
-            </button>
-        </div>
-    </div>
-    
-    
-
-
-    <!-- Cards Section -->
-    <div class="container mt-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card" id="non-veg">
-                    <img src="https://wallpapercave.com/dwp1x/wp7428110.jpg" class="card-img-top img-fluid rounded" alt="Non-Veg Dish">
-                    <div class="card-body">
-                        <h5 class="card-title">Non-Veg</h5>
-                        <p class="card-text">Delicious non-veg meals prepared just for you!</p>
-                        <a href="vegMenu.html" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" id="veg">
-                    <img src="https://img.freepik.com/free-photo/delicious-food-table_23-2150857894.jpg" class="card-img-top img-fluid rounded" alt="Veg Dish">
-                    <div class="card-body">
-                        <h5 class="card-title">Veg</h5>
-                        <p class="card-text">Healthy and tasty vegetarian meals to satisfy your cravings.</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" id="drinks">
-                    <img src="https://images.pexels.com/photos/1337825/pexels-photo-1337825.jpeg" class="card-img-top img-fluid rounded" alt="Drinks and Beverages">
-                    <div class="card-body">
-                        <h5 class="card-title">Drinks & Beverages</h5>
-                        <p class="card-text">Refreshing drinks and beverages for every occasion.</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Scrolling Text at the top -->
+    <div class="scrolling-text">
+        <span>This Feature is in Development. Click "Enable Location" to test the Feature.</span>
     </div>
 
-    <!-- Hotel Room Card -->
-    <div class="container mt-5">
-        <div class="card" style="width: 18rem;" id="Hotel-card">
-            <img class="card-img-top" src="https://images.pexels.com/photos/6480209/pexels-photo-6480209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hotel Rooms">
+    <div class="container">
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Hotel Rooms</h5>
-                <p class="card-text">Book your stay and enjoy a comfortable experience at our hotel.</p>
-                <a href="rooms.html" class="btn btn-primary">Book Rooms</a>
+                <h5 class="card-title text-center">Enable Your Location</h5>
+                <p class="card-text text-center">Click the button below to enable your location and find nearby users.</p>
+                <button id="enableLocation" class="btn btn-primary">Enable Location</button>
+                <p id="locationStatus" class="mt-3 text-center"></p>
             </div>
         </div>
     </div>
 
-    <!-- Meal Partner Card -->
-    <div class="container mt-5">
-        <div class="card text-end" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Single Meal Partner</h5>
-                <p class="card-text">Find a wonderful meal partner and enjoy a delightful meal together.</p>
-                <a href="./MealPartner.html" class="btn btn-primary">Find Partner</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="text-center mt-5 bg-light py-3">
-        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
-    </footer>
+    <!-- Link to the external JavaScript file -->
+    <script src="./EnableLocation.js"></script>
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="addItem.js"></script>
+
 </body>
 </html>
