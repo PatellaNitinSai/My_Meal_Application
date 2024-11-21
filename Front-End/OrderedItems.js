@@ -1,5 +1,3 @@
-// OrderedItems.js
-
 // Retrieve total from local storage
 const cartTotal = localStorage.getItem('cartTotal');
 
@@ -13,12 +11,14 @@ console.log('cartTotal:', cartTotal);
 const orderedItemsContainer = document.getElementById('orderedItemsContainer');
 
 if (orderItems.length > 0) {
+    // Display each item in the orderItems list
     orderItems.forEach(item => {
         let itemElement = document.createElement('div');
-        itemElement.innerHTML = `<h2 class="item">${item}</h2>`;
+        itemElement.innerHTML = `<h2 class="item">${item.itemName} (Quantity: ${item.quantity})</h2>`;
         orderedItemsContainer.appendChild(itemElement);
     });
 
+    // Display the total amount
     let totalElement = document.createElement('div');
     if (cartTotal !== null && cartTotal !== undefined) {
         const numericCartTotal = parseFloat(cartTotal);
@@ -40,38 +40,55 @@ if (orderItems.length > 0) {
     orderedItemsContainer.appendChild(noItemsElement);
 }
 
+// Update the displayed total amount
 const totalAmount = document.getElementById('cartTotal');
 totalAmount.textContent = `Pay ₹${cartTotal}`;
 
 // Function to enable the Google Pay button
-const button = document.querySelector("button")
-// ...
+const button = document.querySelector("button");
 
-// ...
+// Define yourItemsData and yourTotalAmount before using them
+let yourItemsData = orderItems.map(item => ({
+    itemName: item.itemName,
+    quantity: item.quantity,
+    price: item.priceInCents // Adjust to fit your data structure
+}));
 
-// OrderedItems.js
+let yourTotalAmount = parseFloat(cartTotal);
 
-// ... (previous code)
+// Check if the total amount is valid
+if (isNaN(yourTotalAmount)) {
+    yourTotalAmount = 0;  // Set a default value if the total amount is invalid
+}
 
+const apiUrl = window.location.hostname === 'localhost'
+    ? 'http://localhost:5500' // For local development
+    : 'https://my-meal-application-9.onrender.com'; // For production
+
+// Button click event to call the API
 button.addEventListener("click", () => {
-    fetch("http://localhost:3000/create-checkout-session", {
+    fetch(`${apiUrl}/create-checkout-session`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
         },
         body: JSON.stringify({
-            items: orderItems.map(item => ({ itemName: item, quantity: 1 })),
-            amount:cartTotal
+            items: yourItemsData, 
+            amount: yourTotalAmount,
         }),
+        credentials: 'same-origin',
     })
-    .then(res => {
-        if (res.ok) return res.json();
-        return res.json().then(json => Promise.reject(json));
+    .then(response => response.json())
+    .then(data => {
+        // Handle success
+        if (data.url) {
+            window.location.href = data.url; // Redirect to Stripe Checkout
+        } else {
+            console.error('No URL returned from server');
+        }
     })
-    .then(({ url }) => {
-        window.location = url;
-    })
-    .catch(e => {
-        console.error(e.error);
+    .catch(error => {
+        console.error('Error:', error);
     });
 });
