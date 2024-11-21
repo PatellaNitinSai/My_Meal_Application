@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "start": "npm run start --prefix backend",
+    "start": "npm run start --prefix backend",
     "build": "echo 'No build step required in root'",
-  "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,5 +23,4 @@
   "devDependencies": {
     "nodemon": "^2.0.22"
   }
-  
 }

@@ -3,203 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Updated Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-2VlIfh0ZhCrqV0oo3uxvJhbu02Rs2p5TbkxOFxJ+8qK/E97pZCUg0xBohJz+wLdu" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-Z6fSgnZ9xIbDBLml8cFa6rWT7wsuHL8FAYxBbWydU1FeJboAEnA+YYOuQq0+XT1Q" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navbar -->
     <header>
-        <div class="logo">Logo</div>
-        <nav>
-          <ul>
-            <li><a href="./Home.html" id="nav">Home</a></li>
-            <li><a href="./about.html" id="nav">About</a></li>
-            <li><a href="#" id="nav">Services</a></li>
-            <li><a href="./contact.html" id="nav">Contact</a></li>
-            <div class="bike-container">
-              <div class="bike"></div>
-          </ul>
-          <div class="container mt-5">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand h3" href="./Home.html">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="vegMenu.html">Veg</a></li>
-                    <li><a class="dropdown-item" href="#">Non-Veg</a></li>
-                    <li><a class="dropdown-item" href="#">Drinks</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <
-                </ul>
-                <button type="button" class="btn btn-danger" onclick="window.location.href='login.html'">Login</button>
-              </div>
-        </div>
-        
-        
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <div class="shimmer-text">Brundavan</div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-        
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" href="./Home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <div class="bike-container">
+                                <div class="bike"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <button class="btn btn-danger" onclick="window.location.href='login.html'">Login</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-      </header>
-    <div class="image-container">
-      <img src="https://img.freepik.com/free-photo/fun-3d-cartoon-illustration-indian-businessman_183364-114538.jpg?size=626&ext=jpg&ga=GA1.1.2118132467.1703667007&semt=ais" alt="no image" id="first-image">
-      <img src="https://media.tenor.com/ba7gafSyuEAAAAAM/tasty-hills-my-tona.gif" alt="no image" class="chef-image">
+    </header>
 
-    </div>
+    <!-- Images Section -->
     <div class="container mt-5">
-      <div id="threeImageCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-              <div class="carousel-item active">
-                  <img src="https://media.istockphoto.com/id/1040524582/photo/steak-and-lobster-on-a-white-plate-and-table-cloth.webp?b=1&s=170667a&w=0&k=20&c=FVb9idxgsDuNjw9ZHD7KG6o3Knf4MbyegxqzJc3KUj4=" class="d-block w-100" alt="First Slide">
-              </div>
-              <div class="carousel-item">
-                  <img src="https://media.istockphoto.com/id/1150368715/photo/duck-leg-confit.webp?b=1&s=170667a&w=0&k=20&c=0ZcoN2hvOkKHtTBLW-T-yognB_wxyj2wMKsTdtCWWis=" class="d-block w-100" alt="Second Slide">
-              </div>
-              <div class="carousel-item">
-                  <img src="https://media.istockphoto.com/id/1182493107/photo/fresh-crispy-pork-burgers-in-a-row-at-food-market.webp?b=1&s=170667a&w=0&k=20&c=T-cwNBp7ZO0keqRx1y5sQLJlF47zJ61UPyLQSjlSuUM=" class="d-block w-100" alt="Third Slide">
-              </div>
-          </div>
-          <button id="previous" class="carousel-control-prev" type="button" data-bs-target="#threeImageCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#threeImageCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden" id="next">Next</span>
-          </button>
-      </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-2VlIfh0ZhCrqV0oo3uxvJhbu02Rs2p5TbkxOFxJ+8qK/E97pZCUg0xBohJz+wLdu" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-Z6fSgnZ9xIbDBLml8cFa6rWT7wsuHL8FAYxBbWydU1FeJboAEnA+YYOuQq0+XT1Q" crossorigin="anonymous"></script>
-  
-   <div class="card-container">
-    <div class="card" id="non-veg" style="width: 18rem;">
-      <img class="card-img-top" src="https://wallpapercave.com/dwp1x/wp7428110.jpg" id="card1" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Non-Veg</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="vegMenu.html" class="btn btn-primary">Order Now</a>
-      </div>
+        <div class="row">
+            <!-- First Image -->
+            <!-- Chef Image (GIF) -->
+            <div class="col-md-6">
+                <img src="https://media.tenor.com/ba7gafSyuEAAAAAM/tasty-hills-my-tona.gif" alt="Chef" class="img-fluid rounded">
+            </div>
+        </div>
     </div>
-    <div class="card" id="veg" style="width: 18rem;">
-      <img class="card-img-top" id="card2" src="https://img.freepik.com/free-photo/delicious-food-table_23-2150857894.jpg?size=626&ext=jpg&ga=GA1.1.2118132467.1703667007&semt=sph" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Veg</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Order Now</a>
-      </div>
+
+    <!-- Carousel Section -->
+    <div class="container mt-5">
+        <div id="threeImageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://media.istockphoto.com/id/1040524582/photo/steak-and-lobster-on-a-white-plate-and-table-cloth.webp" class="d-block w-100 rounded" alt="Steak and Lobster">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://media.istockphoto.com/id/1150368715/photo/duck-leg-confit.webp" class="d-block w-100 rounded" alt="Duck Leg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://media.istockphoto.com/id/1182493107/photo/fresh-crispy-pork-burgers-in-a-row-at-food-market.webp" class="d-block w-100 rounded" alt="Pork Burgers">
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div id="threeImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://media.istockphoto.com/id/1040524582/photo/steak-and-lobster-on-a-white-plate-and-table-cloth.webp?b=1&s=170667a&w=0&k=20&c=FVb9idxgsDuNjw9ZHD7KG6o3Knf4MbyegxqzJc3KUj4=" class="d-block w-100" alt="First Slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://media.istockphoto.com/id/1150368715/photo/duck-leg-confit.webp?b=1&s=170667a&w=0&k=20&c=0ZcoN2hvOkKHtTBLW-T-yognB_wxyj2wMKsTdtCWWis=" class="d-block w-100" alt="Second Slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://media.istockphoto.com/id/1182493107/photo/fresh-crispy-pork-burgers-in-a-row-at-food-market.webp?b=1&s=170667a&w=0&k=20&c=T-cwNBp7ZO0keqRx1y5sQLJlF47zJ61UPyLQSjlSuUM=" class="d-block w-100" alt="Third Slide">
+                        </div>
+                    </div>
+                    <button id="previous" class="carousel-control-prev" type="button" data-bs-target="#threeImageCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#threeImageCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden" id="next">Next</span>
+                    </button>
+                </div>
+            </div>
+
+    <!-- Cards Section -->
+    <div class="container mt-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card" id="non-veg">
+                    <img src="https://wallpapercave.com/dwp1x/wp7428110.jpg" class="card-img-top img-fluid rounded" alt="Non-Veg Dish">
+                    <div class="card-body">
+                        <h5 class="card-title">Non-Veg</h5>
+                        <p class="card-text">Delicious non-veg meals prepared just for you!</p>
+                        <a href="vegMenu.html" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" id="veg">
+                    <img src="https://img.freepik.com/free-photo/delicious-food-table_23-2150857894.jpg" class="card-img-top img-fluid rounded" alt="Veg Dish">
+                    <div class="card-body">
+                        <h5 class="card-title">Veg</h5>
+                        <p class="card-text">Healthy and tasty vegetarian meals to satisfy your cravings.</p>
+                        <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" id="drinks">
+                    <img src="https://images.pexels.com/photos/1337825/pexels-photo-1337825.jpeg" class="card-img-top img-fluid rounded" alt="Drinks and Beverages">
+                    <div class="card-body">
+                        <h5 class="card-title">Drinks & Beverages</h5>
+                        <p class="card-text">Refreshing drinks and beverages for every occasion.</p>
+                        <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card" id="drinks" style="width: 18rem;">
-      <img class="card-img-top" id="card3" src="https://images.pexels.com/photos/1337825/pexels-photo-1337825.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Drinks & Beverages</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Order Now</a>
-      </div>
+
+    <!-- Hotel Room Card -->
+    <div class="container mt-5">
+        <div class="card" style="width: 18rem;" id="Hotel-card">
+            <img class="card-img-top" src="https://images.pexels.com/photos/6480209/pexels-photo-6480209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hotel Rooms">
+            <div class="card-body">
+                <h5 class="card-title">Hotel Rooms</h5>
+                <p class="card-text">Book your stay and enjoy a comfortable experience at our hotel.</p>
+                <a href="rooms.html" class="btn btn-primary">Book Rooms</a>
+            </div>
+        </div>
     </div>
-   </div>
-   <div>
-    <div class="card" style="width: 18rem;" id="Hotel-card">
-      <img class="card-img-top" src="https://images.pexels.com/photos/6480209/pexels-photo-6480209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Hotel Rooms</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="rooms.html " class="btn btn-primary">Books Rooms</a>
-      </div>
-   </div>
 
-   <div>
-
-   </div>
-   <div class="card text-end" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Single Meal Partner</h5>
-      <p class="card-text">Have a Wonderful meal with Wonderful Partner</p>
-      <a href="./MealPartner.html" class="btn btn-primary">Find Partner</a>
+    <!-- Meal Partner Card -->
+    <div class="container mt-5">
+        <div class="card text-end" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Single Meal Partner</h5>
+                <p class="card-text">Find a wonderful meal partner and enjoy a delightful meal together.</p>
+                <a href="./MealPartner.html" class="btn btn-primary">Find Partner</a>
+            </div>
+        </div>
     </div>
-  </div>
-  
-  </div>
-   <footer class="mt-5 text-center">
-    <p>&copy; 2024 Your Website Name. All rights reserved.</p>
-</footer>
-     <script>
-    // Load Menu API call
-    document.getElementById("loadMenu").addEventListener("click", async () => {
-      try {
-        const response = await fetch('https://my-meal-application-9.onrender.com/menu');
-        const data = await response.json();
-        console.log('Menu items:', data);  // Log the menu items
-        alert("Menu Loaded: " + JSON.stringify(data));
-      } catch (error) {
-        console.error('Error loading menu:', error);
-      }
-    });
 
-    // Login API call
-    document.getElementById("loginButton").addEventListener("click", async () => {
-      const userCredentials = {
-        username: 'testUser',  // Replace with actual user input
-        password: 'password123'  // Replace with actual password input
-      };
+    <!-- Footer -->
+    <footer class="text-center mt-5 bg-light py-3">
+        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+    </footer>
 
-      try {
-        const response = await fetch('https://my-meal-application-9.onrender.com/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userCredentials),
-        });
-
-        const data = await response.json();
-        if (data.token) {
-          alert('Login successful! Token: ' + data.token);
-        } else {
-          alert('Login failed!');
-        }
-      } catch (error) {
-        console.error('Error logging in:', error);
-      }
-    });
-
-    // Checkout API call
-    document.getElementById("payNow").addEventListener("click", async () => {
-      const items = [
-        { itemName: 'Learn React Today', quantity: 1, price: 10000 },
-        { itemName: 'Learn CSS Today', quantity: 1, price: 20000 }
-      ];
-      const amount = 30000;
-
-      try {
-        const response = await fetch('https://my-meal-application-9.onrender.com/create-checkout-session', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ items, amount })
-        });
-
-        const data = await response.json();
-        if (data.url) {
-          window.location.href = data.url;  // Redirect to Stripe checkout session URL
-        } else {
-          console.error('Error creating checkout session:', data.error);
-        }
-      } catch (error) {
-        console.error('Error initiating checkout:', error);
-      }
-    });
-  </script>
-<script src="addItem.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-2VlIfh0ZhCrqV0oo3uxvJhbu02Rs2p5TbkxOFxJ+8qK/E97pZCUg0xBohJz+wLdu" crossorigin="anonymous"></script>
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-Z6fSgnZ9xIbDBLml8cFa6rWT7wsuHL8FAYxBbWydU1FeJboAEnA+YYOuQq0+XT1Q" crossorigin="anonymous"></script>
-        </body>
+    <script src="addItem.js"></script>
+</body>
 </html>
