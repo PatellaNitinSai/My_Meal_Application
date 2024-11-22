@@ -54,7 +54,7 @@ const button = document.querySelector("button")
 // ... (previous code)
 
 button.addEventListener("click", () => {
-    fetch("https://nitinrestaurent.onrender.com/create-checkout-session", {
+    fetch("https://webapllication.onrender.com/create-checkout-session", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
