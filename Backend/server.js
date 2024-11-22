@@ -25,7 +25,8 @@ app.use(cors());
 app.use('/menu', Menu);
 app.use('/login',user);
 connectDB();
-app.use(cors({ origin: 'https://nitinrestaurent.onrender.com' }));
+app.use(cors({ origin: process.env.CLIENT_URL}));
+
 
 // ...
 
