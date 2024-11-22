@@ -26,14 +26,17 @@ function fetchCityName(latitude, longitude) {
             if (data.status.code === 200 && data.results.length > 0) {
                 const city = data.results[0].components.city || data.results[0].components.town || data.results[0].components.village;
 
-                document.getElementById("locationStatus").innerText = 
-                    city ? `You are in ${city} ` : "City name not found.";
-                    document.getElementById("locationStatus").innerHTML = 
-    `<button class="btn btn-success w-100 mt-3">
-        <a href="./MealPartnerLogin.html" class="text-white text-decoration-none">Find Partner in ${city}</a>
-    </button>`;
-
-                    
+                if (city) {
+                    // Creating the animated message dynamically outside the card
+                    document.getElementById("locationStatus").innerHTML = `
+                        <div class="location-message">
+                            <p>Find partners in your ${city}!</p>
+                            <a href="./MealPartnerLogin.html" class="location-message-btn">Find Partner in ${city}</a>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById("locationStatus").innerText = "City name not found.";
+                }
             } else {
                 document.getElementById("locationStatus").innerText = 
                     "Unable to retrieve city name.";
@@ -44,4 +47,3 @@ function fetchCityName(latitude, longitude) {
                 "Error fetching city name: " + error.message;
         });
 }
-
