@@ -7,6 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        
         body {
             background: #f0f4f8;
             font-family: 'Arial', sans-serif;
@@ -79,13 +80,68 @@
                 transform: translateX(-100%);
             }
         }
+            /* Animation for the location message */
+            @keyframes fadeInUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        
+            /* Professional font and design for the message */
+            .location-message {
+                animation: fadeInUp 1s ease-out;
+                font-family: 'Arial', sans-serif;
+                background-color: #f0f8ff; /* Light background */
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                max-width: 500px;
+                margin: 30px auto;
+                text-align: center;
+            }
+        
+            .location-message p {
+                font-size: 1.6rem;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 20px;
+            }
+        
+            .location-message-btn {
+                display: inline-block;
+                padding: 12px 25px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                background-color: #28a745;
+                color: white;
+                border-radius: 25px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+            }
+        
+            .location-message-btn:hover {
+                background-color: #218838;
+            }
+        
+            /* Styling for the "Find Partner" button */
+            .location-message-btn:focus, .location-message-btn:hover {
+                color: white;
+                outline: none;
+            }
+        
+        
     </style>
 </head>
 <body>
 
     <!-- Scrolling Text at the top -->
     <div class="scrolling-text">
-        <span>This Feature is in Development. Click "Enable Location" to test the Feature.</span>
+        <span>This Feature is under Development. Click "Enable Location" to test the Feature.</span>
     </div>
 
     <div class="container">
