@@ -99,11 +99,6 @@
 
 <body>
     <!-- Navbar -->
-    <div id="loadingSpinner" class="d-flex justify-content-center align-items-center vh-100 bg-light">
-        <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pick and Order</a>
@@ -175,19 +170,18 @@
         const cartTotalSpan = document.getElementById('cartTotal');
         let menuData = [];
         let orderItems = [];
+        const apiUrl = window.location.hostname === 'localhost'
+            ? 'http://localhost:5000'
+            : 'https://webapllication.onrender.com';
 
         // Fetch menu data from API
-        axios.get("https://webapllication.onrender.com/menu/showVeg")
+        axios.get(`${apiUrl}/menu/showVeg`)
             .then(response => {
                 menuData = response.data;
                 renderMenu(menuData);
-                // Hide loading spinner after data is loaded
-                document.getElementById('loadingSpinner').style.display = 'none';
             })
             .catch(error => {
                 console.error(error);
-                // Optionally hide spinner and show error message
-                document.getElementById('loadingSpinner').style.display = 'none';
                 alert('Failed to load menu data. Please try again later.');
             });
 
