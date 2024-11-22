@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="veg-menu.css">
     <title>Menu Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         /* Animating the "Pick and Order" Text */
         #pick-and-order {
@@ -24,6 +24,54 @@
             animation: fadeIn 1.5s forwards;
         }
 
+        .animate-text:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .animate-text:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .animate-text:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .animate-text:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .animate-text:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .animate-text:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        .animate-text:nth-child(7) {
+            animation-delay: 1.2s;
+        }
+
+        .animate-text:nth-child(8) {
+            animation-delay: 1.4s;
+        }
+
+        .animate-text:nth-child(9) {
+            animation-delay: 1.6s;
+        }
+
+        .animate-text:nth-child(10) {
+            animation-delay: 1.8s;
+        }
+
+        .animate-text:nth-child(11) {
+            animation-delay: 2s;
+        }
+
+        .animate-text:nth-child(12) {
+            animation-delay: 2.2s;
+        }
+
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -34,6 +82,7 @@
             }
         }
 
+        /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             #pick-and-order {
                 font-size: 2rem;
@@ -45,25 +94,16 @@
                 font-size: 1.5rem;
             }
         }
-
-        /* Centering the Loading Spinner */
-        .spinner-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.7);
-        }
     </style>
 </head>
 
 <body>
-    <div id="loadingSpinner" class="spinner-container">
+    <!-- Navbar -->
+    <div id="loadingSpinner" class="d-flex justify-content-center align-items-center vh-100 bg-light">
         <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pick and Order</a>
@@ -99,7 +139,6 @@
             <span class="animate-text">r</span>
         </h1>
     </header>
-
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-md-6">
@@ -114,13 +153,13 @@
                 </select>
             </div>
         </div>
-
         <div id="menuContainer" class="row">
             <!-- Menu Items will be rendered here -->
         </div>
     </div>
 
-    <button id="cartButton" class="btn btn-success position-fixed bottom-0 end-0 m-4" onclick="addToCart()">
+    <button id="cartButton" class="btn btn-success position-fixed bottom-0 end-0 m-4"
+        onclick="addToCart()">
         <a href="OrderedItems.html" class="text-white">Add to Cart: ₹<span id="cartTotal">0</span></a>
     </button>
 
@@ -130,23 +169,27 @@
 
     <script>
         const rupeeSymbol = '\u20B9';
-        let menuData = [];
-        let cartItems = [];
-        let total = 0;
-
+        let count = 0;
+        window.total = 0;
         const menuContainer = document.getElementById('menuContainer');
         const cartTotalSpan = document.getElementById('cartTotal');
-        const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://webapllication.onrender.com';
+        let menuData = [];
+        let orderItems = [];
+        const apiUrl = window.location.hostname === 'localhost'
+            ? 'http://localhost:5000'
+            : 'https://webapllication.onrender.com';
 
         // Fetch menu data from API
         axios.get(`${apiUrl}/menu/showVeg`)
             .then(response => {
                 menuData = response.data;
                 renderMenu(menuData);
+                // Hide loading spinner after data is loaded
                 document.getElementById('loadingSpinner').style.display = 'none';
             })
             .catch(error => {
                 console.error(error);
+                // Optionally hide spinner and show error message
                 document.getElementById('loadingSpinner').style.display = 'none';
                 alert('Failed to load menu data. Please try again later.');
             });
@@ -154,9 +197,11 @@
         function renderMenu(data) {
             menuContainer.innerHTML = ''; // Clear current menu
             data.forEach((item) => {
+                // Create Bootstrap column
                 const col = document.createElement("div");
-                col.classList.add("col-md-4", "mb-4");
+                col.classList.add("col-md-4", "mb-4"); // Adjust column size (4 means 3 items per row)
 
+                // Create Bootstrap card
                 const card = `
                     <div class="card h-100 border-primary">
                         <div class="card-body">
@@ -178,51 +223,44 @@
                 col.innerHTML = card;
                 menuContainer.appendChild(col);
 
+                // Add event listeners for buttons
                 const addButton = col.querySelector(".add-button");
                 const removeButton = col.querySelector(".remove-button");
                 const spanCount = col.querySelector(".count");
 
-                // Initialize item count in cart
-                let itemCount = 0;
-
-                addButton.addEventListener("click", () => {
-                    itemCount++;
-                    spanCount.textContent = itemCount;
-                    total += item.price;
-                    updateCartTotal();
-
-                    // Add or update item in cartItems
-                    const existingItem = cartItems.find(i => i.name === item.itemName);
-                    if (existingItem) {
-                        existingItem.count++;
-                    } else {
-                        cartItems.push({ name: item.itemName, price: item.price, count: 1 });
-                    }
-
-                    removeButton.disabled = false;
-                });
-
-                removeButton.addEventListener("click", () => {
-                    if (itemCount > 0) {
-                        itemCount--;
-                        spanCount.textContent = itemCount;
-                        total -= item.price;
-                        updateCartTotal();
-
-                        const index = cartItems.findIndex(i => i.name === item.itemName);
-                        if (index !== -1) {
-                            cartItems[index].count--;
-                            if (cartItems[index].count === 0) {
-                                cartItems.splice(index, 1);
-                            }
-                        }
-
-                        if (itemCount === 0) {
-                            removeButton.disabled = true;
-                        }
-                    }
-                });
+                addButton.addEventListener("click", () =>
+                    addItem(spanCount, item.price, item.itemName, removeButton)
+                );
+                removeButton.addEventListener("click", () =>
+                    removeItem(spanCount, item.price, item.itemName, removeButton)
+                );
             });
+        }
+
+        function addItem(spanCount, price, name, removeButton) {
+            count++;
+            spanCount.textContent = `${count}`;
+            total += price;
+            updateCartTotal();
+            orderItems.push(name);
+
+            // Enable the '-' button when an item is added
+            removeButton.disabled = false;
+        }
+
+        function removeItem(spanCount, price, name, removeButton) {
+            count = Math.max(0, count - 1);
+            spanCount.textContent = `${count}`;
+            total = Math.max(0, total - price);
+            updateCartTotal();
+            if (count === 0) {
+                removeButton.disabled = true;
+            }
+
+            const index = orderItems.indexOf(name);
+            if (index !== -1) {
+                orderItems.splice(index, 1);
+            }
         }
 
         function searchItems() {
@@ -242,7 +280,7 @@
             localStorage.setItem('cartTotal', total.toFixed(2));
 
             // Save order items to local storage
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            localStorage.setItem('cartItems', JSON.stringify(orderItems));
 
             // Redirect to OrderedItems.html
             location.href = 'OrderedItems.html';
