@@ -1,3 +1,5 @@
+// OrderedItems.js
+
 // Retrieve total from local storage
 const cartTotal = localStorage.getItem('cartTotal');
 
@@ -11,14 +13,12 @@ console.log('cartTotal:', cartTotal);
 const orderedItemsContainer = document.getElementById('orderedItemsContainer');
 
 if (orderItems.length > 0) {
-    // Display each item in the orderItems list
     orderItems.forEach(item => {
         let itemElement = document.createElement('div');
-        itemElement.innerHTML = `<h2 class="item">${item.itemName} (Quantity: ${item.quantity})</h2>`;
+        itemElement.innerHTML = `<h2 class="item">${item}</h2>`;
         orderedItemsContainer.appendChild(itemElement);
     });
 
-    // Display the total amount
     let totalElement = document.createElement('div');
     if (cartTotal !== null && cartTotal !== undefined) {
         const numericCartTotal = parseFloat(cartTotal);
@@ -40,55 +40,38 @@ if (orderItems.length > 0) {
     orderedItemsContainer.appendChild(noItemsElement);
 }
 
-// Update the displayed total amount
 const totalAmount = document.getElementById('cartTotal');
 totalAmount.textContent = `Pay ₹${cartTotal}`;
 
 // Function to enable the Google Pay button
-const button = document.querySelector("button");
+const button = document.querySelector("button")
+// ...
 
-// Define yourItemsData and yourTotalAmount before using them
-let yourItemsData = orderItems.map(item => ({
-    itemName: item.itemName,
-    quantity: item.quantity,
-    price: item.priceInCents // Adjust to fit your data structure
-}));
+// ...
 
-let yourTotalAmount = parseFloat(cartTotal);
+// OrderedItems.js
 
-// Check if the total amount is valid
-if (isNaN(yourTotalAmount)) {
-    yourTotalAmount = 0;  // Set a default value if the total amount is invalid
-}
+// ... (previous code)
 
-const apiUrl = window.location.hostname === 'localhost'
-    ? 'http://localhost:5500' // For local development
-    : 'https://webapllication.onrender.com'; // For production
-
-// Button click event to call the API
 button.addEventListener("click", () => {
-    fetch(`${apiUrl}/create-checkout-session`, {
+    fetch("https://nitinrestaurent.onrender.com/create-checkout-session", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
         },
         body: JSON.stringify({
-            items: yourItemsData, 
-            amount: yourTotalAmount,
+            items: orderItems.map(item => ({ itemName: item, quantity: 1 })),
+            amount:cartTotal
         }),
-        credentials: 'same-origin',
     })
-    .then(response => response.json())
-    .then(data => {
-        // Handle success
-        if (data.url) {
-            window.location.href = data.url; // Redirect to Stripe Checkout
-        } else {
-            console.error('No URL returned from server');
-        }
+    .then(res => {
+        if (res.ok) return res.json();
+        return res.json().then(json => Promise.reject(json));
     })
-    .catch(error => {
-        console.error('Error:', error);
+    .then(({ url }) => {
+        window.location = url;
+    })
+    .catch(e => {
+        console.error(e.error);
     });
 });
