@@ -8,6 +8,35 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-2VlIfh0ZhCrqV0oo3uxvJhbu02Rs2p5TbkxOFxJ+8qK/E97pZCUg0xBohJz+wLdu" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-Z6fSgnZ9xIbDBLml8cFa6rWT7wsuHL8FAYxBbWydU1FeJboAEnA+YYOuQq0+XT1Q" crossorigin="anonymous"></script>
+    <style>
+        .alert {
+            background-color: #fff3cd;
+            border: 1px solid #ffecb5;
+            color: #856404;
+            font-size: 1.4rem;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInText 2s ease-in-out;
+        }
+        .alert span {
+            color: #ff5733; /* Highlighted color for the message */
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+        
+        /* Custom fadeInText animation */
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
     
 </head>
 <body>
@@ -20,13 +49,13 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand h3" href="./Home.html">Nitin's Restaurent</a>
+                <a class="navbar-brand h3" href="./index.html">Nitin's Restaurant</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="./Home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="./index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
@@ -49,6 +78,7 @@
     </header>
 
     <!-- Images Section -->
+     
     <div class="container mt-5">
         <div class="row justify-content-center">
             <!-- First Image -->
@@ -58,7 +88,23 @@
             </div>
         </div>
     </div>
-    
+    <div class="container mt-5 p-4" id="meal-partner-highlight" style="position: relative;">
+        <div class="card text-center shadow-lg rounded animate__animated animate__bounce" style="background-color: #f8f9fa; border: 2px solid #007bff;">
+            <div class="card-body">
+                <h2 class="card-title text-primary">🌟 Single Meal Partner 🌟</h2>
+                <p class="card-text fs-5">
+                    <div class="container mt-5">
+                        <div class="alert alert-warning text-center animate__animated animate__zoomIn" role="alert" style="font-size: 1.5rem; font-weight: bold;">
+                            <span style="font-size: 1.8rem; color: #ff5733;">A Brand New Feature You Cannot Find in the Current Market!</span>
+                        </div>
+                    </div>
+                    Find a wonderful meal partner and enjoy a delightful meal together. 
+                    Make your dining experience more special with someone by your side!
+                </p>
+                <a href="./MealPartner.html" class="btn btn-primary btn-lg px-5 py-2">Check Feature</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Carousel Section -->
     <div class="container mt-5">
