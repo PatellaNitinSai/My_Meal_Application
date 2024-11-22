@@ -63,7 +63,7 @@ if (isNaN(yourTotalAmount)) {
 
 const apiUrl = window.location.hostname === 'localhost'
     ? 'http://localhost:5500' // For local development
-    : 'https://my-meal-application-9.onrender.com'; // For production
+    : 'https://webapllication.onrender.com/'; // For production
 
 // Button click event to call the API
 button.addEventListener("click", () => {
