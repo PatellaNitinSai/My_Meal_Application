@@ -1,7 +1,7 @@
 // OrderedItems.js
 
 // Retrieve total from local storage
-const cartTotal = localStorage.getItem('cartTotal');
+const cartTotal = localStorage.getItem('cartTotal') || '0';
 
 // Retrieve order items from local storage
 const orderItemsString = localStorage.getItem('cartItems');
