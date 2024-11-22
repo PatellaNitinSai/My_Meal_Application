@@ -27,47 +27,36 @@
         .animate-text:nth-child(1) {
             animation-delay: 0s;
         }
-
         .animate-text:nth-child(2) {
             animation-delay: 0.2s;
         }
-
         .animate-text:nth-child(3) {
             animation-delay: 0.4s;
         }
-
         .animate-text:nth-child(4) {
             animation-delay: 0.6s;
         }
-
         .animate-text:nth-child(5) {
             animation-delay: 0.8s;
         }
-
         .animate-text:nth-child(6) {
             animation-delay: 1s;
         }
-
         .animate-text:nth-child(7) {
             animation-delay: 1.2s;
         }
-
         .animate-text:nth-child(8) {
             animation-delay: 1.4s;
         }
-
         .animate-text:nth-child(9) {
             animation-delay: 1.6s;
         }
-
         .animate-text:nth-child(10) {
             animation-delay: 1.8s;
         }
-
         .animate-text:nth-child(11) {
             animation-delay: 2s;
         }
-
         .animate-text:nth-child(12) {
             animation-delay: 2.2s;
         }
@@ -76,7 +65,6 @@
             0% {
                 opacity: 0;
             }
-
             100% {
                 opacity: 1;
             }
@@ -104,6 +92,7 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pick and Order</a>
@@ -139,6 +128,8 @@
             <span class="animate-text">r</span>
         </h1>
     </header>
+    <h1>Loading....</h1>
+
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-md-6">
@@ -158,8 +149,7 @@
         </div>
     </div>
 
-    <button id="cartButton" class="btn btn-success position-fixed bottom-0 end-0 m-4"
-        onclick="addToCart()">
+    <button id="cartButton" class="btn btn-success position-fixed bottom-0 end-0 m-4" onclick="addToCart()">
         <a href="OrderedItems.html" class="text-white">Add to Cart: ₹<span id="cartTotal">0</span></a>
     </button>
 
@@ -175,23 +165,20 @@
         const cartTotalSpan = document.getElementById('cartTotal');
         let menuData = [];
         let orderItems = [];
-        const apiUrl = window.location.hostname === 'localhost'
-            ? 'http://localhost:5000'
-            : 'https://webapllication.onrender.com';
 
         // Fetch menu data from API
-        axios.get(`${apiUrl}/menu/showVeg`)
+        axios.get("https://webapllication.onrender.com/menu/showVeg")
             .then(response => {
                 menuData = response.data;
                 renderMenu(menuData);
-                // Hide loading spinner after data is loaded
+                // Hide the loading spinner once the data is loaded
                 document.getElementById('loadingSpinner').style.display = 'none';
             })
             .catch(error => {
                 console.error(error);
-                // Optionally hide spinner and show error message
+                // Hide the loading spinner and show an error message if something goes wrong
                 document.getElementById('loadingSpinner').style.display = 'none';
-                alert('Failed to load menu data. Please try again later.');
+                alert("Error loading the menu data!");
             });
 
         function renderMenu(data) {
@@ -219,7 +206,6 @@
                         </div>
                     </div>
                 `;
-
                 col.innerHTML = card;
                 menuContainer.appendChild(col);
 
@@ -292,7 +278,7 @@
             if (filterValue === 'all') {
                 renderMenu(menuData);
             } else {
-                const filteredItems = menuData.filter(item => item.category.toLowerCase() === filterValue.toLowerCase());
+                const filteredItems = menuData.filter(item => item.category === filterValue);
                 renderMenu(filteredItems);
             }
         }
