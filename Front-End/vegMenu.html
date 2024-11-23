@@ -228,16 +228,21 @@
             });
         }
 
-        function addItem(spanCount, price, name, removeButton) {
-            count++;
-            spanCount.textContent = `${count}`;
-            total += price;
-            updateCartTotal();
-            orderItems.push(name);
+        let itemCounts = {};
 
-            // Enable the '-' button when an item is added
-            removeButton.disabled = false;
-        }
+function addItem(spanCount, price, name, removeButton) {
+    if (!itemCounts[name]) {
+        itemCounts[name] = 0;
+    }
+    itemCounts[name]++;
+    spanCount.textContent = `${itemCounts[name]}`;
+    total += price;
+    updateCartTotal();
+    if (!orderItems.includes(name)) {
+        orderItems.push(name);
+    }
+    removeButton.disabled = false;
+}
 
         function removeItem(spanCount, price, name, removeButton) {
             count = Math.max(0, count - 1);
