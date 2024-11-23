@@ -5,26 +5,26 @@
 **Single Meal Partner** which connects users with a meal-sharing partner to enhance social dining experiences, split costs, and reduce food waste.
 Single-Meal-Partner is an innovative feature designed to enhance the dining experience by connecting users with a meal-sharing partner. This feature is ideal for individuals who want to:
 
-**.**Enjoy social dining with like-minded people.
-**.**Split the cost of meals.
-**.**Reduce food waste by sharing.
+# Enjoy social dining with like-minded people.
+# Split the cost of meals.
+# Reduce food waste by sharing.
 ## How It Works
 ## Opt-In:
-**.**While placing an order, users can choose the Single-Meal-Partner option to share their meal.
+**.** While placing an order, users can choose the Single-Meal-Partner option to share their meal.
 
 ## Preferences:
 ## Users can set preferences, such as:
 
-**.**Meal type (veg/non-veg).
-**.**Budget range.
-**.**Dining style (casual/formal).
-**.**Matching Algorithm:
-**.**The system uses an intelligent matching algorithm to pair users based on their:
+**.** Meal type (veg/non-veg).
+**.** Budget range.
+**.** Dining style (casual/formal).
+**.** Matching Algorithm:
+**.** The system uses an intelligent matching algorithm to pair users based on their:
 
-**.**Location proximity.
-**.**Meal preferences.
-**.**Time availability.
-**.**Anonymity & Security:
+**.** Location proximity.
+**.** Meal preferences.
+**.** Time availability.
+**.** Anonymity & Security:
 
 ## Users remain anonymous until they confirm the match.
 A chat feature allows them to discuss details securely within the platform.
