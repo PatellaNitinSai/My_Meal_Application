@@ -1,34 +1,88 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pick and Order</title>
+    <link rel="stylesheet" href="veg-menu.css">
+    <title>Menu Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
-        /* Navbar and Header */
-        .navbar {
-            background-color: #343a40;
-        }
-
+        /* Animating the "Pick and Order" Text */
         #pick-and-order {
             font-size: 3rem;
             font-weight: bold;
             text-align: center;
-            margin-top: 20px;
+            padding: 20px;
+            color: #333;
         }
 
-        /* Spinner */
-        #loadingSpinner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
+        .animate-text {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
         }
 
-        /* Responsive Design */
+        .animate-text:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .animate-text:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .animate-text:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .animate-text:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .animate-text:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .animate-text:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        .animate-text:nth-child(7) {
+            animation-delay: 1.2s;
+        }
+
+        .animate-text:nth-child(8) {
+            animation-delay: 1.4s;
+        }
+
+        .animate-text:nth-child(9) {
+            animation-delay: 1.6s;
+        }
+
+        .animate-text:nth-child(10) {
+            animation-delay: 1.8s;
+        }
+
+        .animate-text:nth-child(11) {
+            animation-delay: 2s;
+        }
+
+        .animate-text:nth-child(12) {
+            animation-delay: 2.2s;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             #pick-and-order {
                 font-size: 2rem;
@@ -45,27 +99,42 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pick and Order</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header>
-        <h1 id="pick-and-order">Pick and Order</h1>
+    <header class="text-center mt-4">
+        <h1 id="pick-and-order">
+            <span class="animate-text">P</span>
+            <span class="animate-text">i</span>
+            <span class="animate-text">c</span>
+            <span class="animate-text">k</span>
+            <span class="animate-text">&nbsp;</span>
+            <span class="animate-text">a</span>
+            <span class="animate-text">n</span>
+            <span class="animate-text">d</span>
+            <span class="animate-text">&nbsp;</span>
+            <span class="animate-text">O</span>
+            <span class="animate-text">r</span>
+            <span class="animate-text">d</span>
+            <span class="animate-text">e</span>
+            <span class="animate-text">r</span>
+        </h1>
     </header>
-
-    <!-- Loading Spinner -->
-    <div id="loadingSpinner">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container mt-4 d-none" id="mainContent">
-        <!-- Search and Filter -->
+    <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-md-6">
                 <input type="text" id="searchBox" class="form-control" placeholder="Search items" oninput="searchItems()">
@@ -74,141 +143,154 @@
                 <select id="filterDropdown" class="form-select" onchange="filterMenu()">
                     <option value="all">All</option>
                     <option value="veg">Veg</option>
-                    <option value="non veg">Non-Veg</option>
+                    <option value="non veg">Non-veg</option>
                     <option value="drinks">Drinks</option>
                 </select>
             </div>
         </div>
-
-        <!-- Menu Items -->
         <div id="menuContainer" class="row">
-            <!-- Dynamically Rendered Items -->
+            <!-- Menu Items will be rendered here -->
         </div>
     </div>
 
-    <!-- Cart Button -->
-    <button class="btn btn-success position-fixed bottom-0 end-0 m-4">
-        <a href="OrderedItems.html" class="text-white">Cart Total: ₹<span id="cartTotal">0</span></a>
+    <button id="cartButton" class="btn btn-success position-fixed bottom-0 end-0 m-4"
+        onclick="addToCart()">
+        <a href="OrderedItems.html" class="text-white">Add to Cart: ₹<span id="cartTotal">0</span></a>
     </button>
 
-    <!-- Footer -->
     <footer class="text-center mt-4">
         &copy; 2024 Pick and Order
     </footer>
 
     <script>
         const rupeeSymbol = '\u20B9';
-        let total = 0;
-        let menuData = [];
-        let orderItems = [];
-
+        let count = 0;
+        window.total = 0;
         const menuContainer = document.getElementById('menuContainer');
         const cartTotalSpan = document.getElementById('cartTotal');
-        const loadingSpinner = document.getElementById('loadingSpinner');
-        const mainContent = document.getElementById('mainContent');
-
+        let menuData = [];
+        let orderItems = [];
         const apiUrl = window.location.hostname === 'localhost'
             ? 'http://localhost:5000'
             : 'https://webapllication.onrender.com';
 
-        // Fetch Menu Data
-        function fetchMenuData() {
-            axios.get(`${apiUrl}/menu/showVeg`)
-                .then(response => {
-                    menuData = response.data;
-                    renderMenu(menuData);
-                    loadingSpinner.classList.add('d-none'); // Hide Spinner
-                    mainContent.classList.remove('d-none'); // Show Content
-                })
-                .catch(error => {
-                    console.error('Error fetching menu:', error);
-                    alert('Failed to load menu. Please try again later.');
-                });
-        }
+        // Fetch menu data from API
+        axios.get(`${apiUrl}/menu/showVeg`)
+            .then(response => {
+                menuData = response.data;
+                renderMenu(menuData);
+            })
+            .catch(error => {
+                console.error(error);
+                alert('Failed to load menu data. Please try again later.');
+            });
 
-        // Render Menu Items
         function renderMenu(data) {
-            menuContainer.innerHTML = ''; // Clear Menu
-            data.forEach(item => {
-                const col = document.createElement('div');
-                col.classList.add('col-md-4', 'mb-4');
-                col.innerHTML = `
-                    <div class="card h-100">
+            menuContainer.innerHTML = ''; // Clear current menu
+            data.forEach((item) => {
+                // Create Bootstrap column
+                const col = document.createElement("div");
+                col.classList.add("col-md-4", "mb-4"); // Adjust column size (4 means 3 items per row)
+
+                // Create Bootstrap card
+                const card = `
+                    <div class="card h-100 border-primary">
                         <div class="card-body">
-                            <h5 class="card-title">${item.itemName}</h5>
+                            <h5 class="card-title text-primary">${item.itemName}</h5>
                             <p class="card-text">${item.description}</p>
-                            <p><strong>${rupeeSymbol}${item.price}</strong></p>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-success btn-sm add-item">+</button>
-                                <span class="item-count">0</span>
-                                <button class="btn btn-danger btn-sm remove-item" disabled>-</button>
+                            <p class="text-dark"><strong>${rupeeSymbol}${item.price}</strong></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="label">Add Item</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-success add-button">+</button>
+                                    <span class="count mx-2">0</span>
+                                    <button class="btn btn-sm btn-danger remove-button" disabled>-</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 `;
 
-                const addButton = col.querySelector('.add-item');
-                const removeButton = col.querySelector('.remove-item');
-                const itemCount = col.querySelector('.item-count');
-
-                addButton.addEventListener('click', () => addItem(item, itemCount, removeButton));
-                removeButton.addEventListener('click', () => removeItem(item, itemCount, removeButton));
-
+                col.innerHTML = card;
                 menuContainer.appendChild(col);
+
+                // Add event listeners for buttons
+                const addButton = col.querySelector(".add-button");
+                const removeButton = col.querySelector(".remove-button");
+                const spanCount = col.querySelector(".count");
+
+                addButton.addEventListener("click", () =>
+                    addItem(spanCount, item.price, item.itemName, removeButton)
+                );
+                removeButton.addEventListener("click", () =>
+                    removeItem(spanCount, item.price, item.itemName, removeButton)
+                );
             });
         }
 
-        // Add Item to Cart
-        function addItem(item, itemCount, removeButton) {
-            const count = parseInt(itemCount.textContent) + 1;
-            itemCount.textContent = count;
-            total += item.price;
+        function addItem(spanCount, price, name, removeButton) {
+            count++;
+            spanCount.textContent = `${count}`;
+            total += price;
             updateCartTotal();
+            orderItems.push(name);
 
-            if (count > 0) removeButton.disabled = false;
-            orderItems.push(item.itemName);
+            // Enable the '-' button when an item is added
+            removeButton.disabled = false;
         }
 
-        // Remove Item from Cart
-        function removeItem(item, itemCount, removeButton) {
-            const count = Math.max(0, parseInt(itemCount.textContent) - 1);
-            itemCount.textContent = count;
-            total = Math.max(0, total - item.price);
+        function removeItem(spanCount, price, name, removeButton) {
+            count = Math.max(0, count - 1);
+            spanCount.textContent = `${count}`;
+            total = Math.max(0, total - price);
             updateCartTotal();
+            if (count === 0) {
+                removeButton.disabled = true;
+            }
 
-            if (count === 0) removeButton.disabled = true;
-            const index = orderItems.indexOf(item.itemName);
-            if (index !== -1) orderItems.splice(index, 1);
+            const index = orderItems.indexOf(name);
+            if (index !== -1) {
+                orderItems.splice(index, 1);
+            }
         }
 
-        // Update Cart Total
+        function searchItems() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const filteredItems = menuData.filter(item => item.itemName.toLowerCase().includes(searchTerm));
+            renderMenu(filteredItems);
+        }
+
         function updateCartTotal() {
             cartTotalSpan.textContent = total.toFixed(2);
         }
 
-        // Search Items
-        function searchItems() {
-            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
-            const filteredItems = menuData.filter(item =>
-                item.itemName.toLowerCase().includes(searchTerm)
-            );
-            renderMenu(filteredItems);
+        function addToCart() {
+            alert(`Items added to cart. Total: ${rupeeSymbol}${total.toFixed(2)}`);
+
+            // Save total to local storage
+            localStorage.setItem('cartTotal', total.toFixed(2));
+
+            // Save order items to local storage
+            localStorage.setItem('cartItems', JSON.stringify(orderItems));
+
+            // Redirect to OrderedItems.html
+            location.href = 'OrderedItems.html';
         }
 
-        // Filter Menu
         function filterMenu() {
             const filterValue = document.getElementById('filterDropdown').value;
-            const filteredItems =
-                filterValue === 'all'
-                    ? menuData
-                    : menuData.filter(item => item.category.toLowerCase() === filterValue.toLowerCase());
-            renderMenu(filteredItems);
-        }
 
-        // Initialize Fetch
-        fetchMenuData();
+            if (filterValue === 'all') {
+                renderMenu(menuData);
+            } else {
+                const filteredItems = menuData.filter(item => item.category.toLowerCase() === filterValue.toLowerCase());
+                renderMenu(filteredItems);
+            }
+        }
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
