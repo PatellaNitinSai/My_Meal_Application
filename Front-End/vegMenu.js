@@ -1,93 +1,115 @@
-const rupeeSymbol = '\u20B9';
-let total = 0;
+const loadingSpinner = document.getElementById('loadingSpinner');
 const menuContainer = document.getElementById('menuContainer');
 const cartTotalSpan = document.getElementById('cartTotal');
-const addToCartButton = document.getElementById('addToCartButton'); // Add an ID to your "Add to Cart" button
+const apiUrl = window.location.hostname === 'localhost'
+    ? 'http://localhost:5000'
+    : 'https://webapllication.onrender.com';
+const rupeeSymbol = '\u20B9';
+
 let menuData = [];
-let orderItems = {};
+let orderItems = [];
+let total = 0;
 
-axios.get('http://localhost:3000/menu/showVeg')
-    .then(response => {
-        menuData = response.data;
-        renderMenu(menuData);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+// Show and hide spinner
+function showSpinner() {
+    loadingSpinner.style.visibility = 'visible';
+}
 
+function hideSpinner() {
+    loadingSpinner.style.visibility = 'hidden';
+}
+
+// Fetch menu data
+function fetchMenu() {
+    showSpinner();
+    axios.get(`${apiUrl}/menu/showVeg`)
+        .then(response => {
+            menuData = response.data;
+            renderMenu(menuData);
+        })
+        .catch(error => {
+            console.error(error);
+            alert('Failed to load menu data.');
+        })
+        .finally(hideSpinner);
+}
+
+// Render menu items
 function renderMenu(data) {
     menuContainer.innerHTML = '';
     data.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('menu-item');
-        const plusButton = document.createElement('div');
-        plusButton.classList.add('quantity-controls');
-        plusButton.innerHTML = `<span class="label">AddItem</span>
-            <button class="add-button"> + </button>
-            <span class="count">0</span>
-            <button class="remove-button" disabled>-</button>`; // Initially disable the '-' button
+        const col = document.createElement('div');
+        col.classList.add('col-md-4', 'mb-4');
 
-        itemElement.innerHTML = `<div class="item-info"><strong>${item.itemName}</strong>: 
-            <textarea class="item-description">${item.description}</textarea>
-            - ${rupeeSymbol} <span class="item-price">${item.price}</span></div>`;
+        const card = `
+            <div class="card h-100 border-primary">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">${item.itemName}</h5>
+                    <p class="card-text">${item.description}</p>
+                    <p class="text-dark"><strong>${rupeeSymbol}${item.price}</strong></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="label">Add Item</span>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-success add-button">+</button>
+                            <span class="count mx-2">0</span>
+                            <button class="btn btn-sm btn-danger remove-button" disabled>-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
 
-        itemElement.appendChild(plusButton);
-        menuContainer.appendChild(itemElement);
+        col.innerHTML = card;
+        menuContainer.appendChild(col);
 
-        const addButton = plusButton.querySelector('.add-button');
-        const removeButton = plusButton.querySelector('.remove-button');
-        const spanCount = plusButton.querySelector('.count');
+        const addButton = col.querySelector('.add-button');
+        const removeButton = col.querySelector('.remove-button');
+        const countSpan = col.querySelector('.count');
 
-        addButton.addEventListener('click', () => addItem(item, spanCount, removeButton));
-        removeButton.addEventListener('click', () => removeItem(item, spanCount, removeButton));
+        addButton.addEventListener('click', () => addItem(countSpan, item.price, item.itemName, removeButton));
+        removeButton.addEventListener('click', () => removeItem(countSpan, item.price, item.itemName, removeButton));
     });
-
-    // Disable "Add to Cart" button initially
-    addToCartButton.disabled = true;
 }
 
-function addItem(item, spanCount, removeButton) {
-    const itemName = item.itemName;
-
-    if (!orderItems[itemName]) {
-        orderItems[itemName] = { count: 0, total: 0, price: item.price };
-    }
-
-    orderItems[itemName].count++;
-    spanCount.textContent = orderItems[itemName].count;
-    orderItems[itemName].total += orderItems[itemName].price;
-    total += orderItems[itemName].price;
-
-    // Enable the '-' button when an item is added
-    removeButton.disabled = false;
-
-    // Enable "Add to Cart" button when at least one item is added
-    addToCartButton.disabled = false;
-
+// Add and remove items
+function addItem(countSpan, price, name, removeButton) {
+    let count = parseInt(countSpan.textContent) + 1;
+    countSpan.textContent = count;
+    total += price;
     updateCartTotal();
+    orderItems.push(name);
+    removeButton.disabled = false;
 }
 
-function removeItem(item, spanCount, removeButton) {
-    const itemName = item.itemName;
+function removeItem(countSpan, price, name, removeButton) {
+    let count = parseInt(countSpan.textContent) - 1;
+    countSpan.textContent = count > 0 ? count : 0;
+    total = Math.max(0, total - price);
+    updateCartTotal();
 
-    if (orderItems[itemName] && orderItems[itemName].count > 0) {
-        orderItems[itemName].count--;
-        spanCount.textContent = orderItems[itemName].count;
-        orderItems[itemName].total = Math.max(0, orderItems[itemName].total - orderItems[itemName].price);
-        total = Math.max(0, total - orderItems[itemName].price);
-
-        // Disable the '-' button when all items are removed
-        if (orderItems[itemName].count === 0) {
-            removeButton.disabled = true;
-        }
-
-        // Disable "Add to Cart" button when all items are removed
-        if (total === 0) {
-            addToCartButton.disabled = true;
-        }
-
-        updateCartTotal();
+    if (count === 0) {
+        removeButton.disabled = true;
     }
+    orderItems = orderItems.filter(item => item !== name);
 }
 
-// ... (rest of your existing code)
+// Update cart total
+function updateCartTotal() {
+    cartTotalSpan.textContent = total.toFixed(2);
+}
+
+// Search and filter
+document.getElementById('searchBox').addEventListener('input', () => {
+    const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+    const filteredItems = menuData.filter(item => item.itemName.toLowerCase().includes(searchTerm));
+    renderMenu(filteredItems);
+});
+
+document.getElementById('filterDropdown').addEventListener('change', () => {
+    const filterValue = document.getElementById('filterDropdown').value.toLowerCase();
+    const filteredItems = filterValue === 'all' ? menuData : menuData.filter(item => item.category.toLowerCase() === filterValue);
+    renderMenu(filteredItems);
+});
+
+// Initial load
+fetchMenu();
